@@ -1,0 +1,3 @@
+你好，{{ username }}
+邮箱修改，请确认新邮箱{{ new_email }}
+  {{ url_for('user.activate', token=token,_external=True) }}激活

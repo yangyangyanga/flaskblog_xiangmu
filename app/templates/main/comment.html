@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+
+{% from 'common/macro.html' import pagination_show, post_show %}
+{% block title %}评论{% endblock %}
+
+{% block page_content %}
+    <h2 style="margin-top: 30px;">评论</h2>
+    {# 显示该条博客的详细信息 #}
+    {{ post_show(posts) }}
+
+    {# 显示该条博客的所有评论回复 #}
+    <div style="margin-left: 50px;">
+        <ul class="media-list">
+            {% for comment in commentpost %}
+            <li class="media" style="margin: 10px auto;">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object img-circle" src="{{ url_for('static', filename='upload/' + comment.user.photo_url) }}"
+                             style="width: 64px;height: 64px" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><a href="{{ url_for('main.usermessage', username=comment.user.username) }}">{{ comment.user.username }}</a></h4>
+                    {{ comment.content }}<br/>
+                    <p style="font-size: 12px">{{ moment(comment.timestamp).fromNow() }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if commentpost %}
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {{ pagination_show(pagination, 'main.comment','', pid) }}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    {% endif %}
+    {# 评论该条博客 #}
+    <div style="margin-top: 30px;"><b>发表评论</b></div>
+    {{ wtf.quick_form(form) }}
+    <div style="width: 100px; height: 100px;"></div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'common/commondiv.html' %}
+
+{% block title %}上传头像{% endblock %}
+
+{% block maindiv %}
+    <h1>上传头像</h1>
+    <div style="margin: 30px auto;">
+        <img class="img-circle" src="{{ url_for('static', filename='upload/' + current_user.photo_url) }}"
+             width="64px" height="64px" alt=""/>
+    </div>
+    {{ wtf.quick_form(form) }}
+{% endblock %}

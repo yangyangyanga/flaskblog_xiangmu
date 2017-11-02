@@ -1,0 +1,11 @@
+{% extends 'common/commondiv.html' %}
+
+{% block title %}用户登录{% endblock %}
+
+{% block maindiv %}
+    <h1>登录</h1>
+    {{ wtf.quick_form(form) }}
+    <div style="float: right; margin-top: -34px;">
+        <a class="btn btn-default" href="{{ url_for('user.identify') }}" role="button">找回密码</a>
+    </div>
+{% endblock %}

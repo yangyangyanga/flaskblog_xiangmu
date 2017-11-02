@@ -1,0 +1,19 @@
+{% extends 'common/base.html' %}
+
+{% from 'common/macro.html' import pagination_show, post_show %}
+{% block title %}所有博客{% endblock %}
+
+{% block page_content %}
+    <h2 style="margin-top: 30px;">{{ username }}</h2>
+    {#  展示博客信息  #}
+    {{ post_show(posts) }}
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {{ pagination_show(pagination, 'main.usermessage', username, '') }}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+a{
+    color: #000;
+}
+a:hover{
+    text-decoration: none;
+}
+a:active{
+    text-decoration: none;
+    color: red;
+}
+h1{
+    margin-bottom: 30px;
+}

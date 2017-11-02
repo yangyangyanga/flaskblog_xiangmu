@@ -1,0 +1,22 @@
+{% extends 'common/base.html' %}
+
+{% from 'common/macro.html' import pagination_show, post_show %}
+
+{% block title %}首页{% endblock %}
+
+{% block page_content %}
+    <h2 style="margin-top: 30px;">发表博客</h2>
+    {{ wtf.quick_form(form) }}
+
+    {#  展示博客信息  #}
+    {{ post_show(posts) }}
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {{ pagination_show(pagination, 'main.index', '', '') }}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+{% endblock %}
